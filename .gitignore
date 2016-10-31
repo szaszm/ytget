@@ -1,3 +1,4 @@
 /config.h
 /youtube_list_playlist
 /youtube_search
+*.o
