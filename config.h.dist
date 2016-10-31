@@ -1,0 +1,5 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define YOUTUBE_DATA_API_KEY "InsertAPIKeyHere"
+#endif /* CONFIG_H */
