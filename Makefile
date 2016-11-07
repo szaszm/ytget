@@ -9,10 +9,10 @@ all: youtube_list_playlist youtube_search
 clean:
 	rm cURL.o HttpResponse.o youtube_search youtube_list_playlist
 
-youtube_list_playlist: youtube_list_playlist.cpp cURL.o HttpResponse.o
+youtube_list_playlist: youtube_list_playlist.cpp cURL.o HttpResponse.o config.h
 	${CPP} -o youtube_list_playlist ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} youtube_list_playlist.cpp cURL.o HttpResponse.o
 
-youtube_search: youtube_search.cpp cURL.o HttpResponse.o
+youtube_search: youtube_search.cpp cURL.o HttpResponse.o config.h
 	${CPP} -o youtube_search ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} youtube_search.cpp cURL.o HttpResponse.o
 
 cURL.o: cURL.cpp

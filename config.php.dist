@@ -1,0 +1,5 @@
+<?php
+
+define('MUSIC_DIRECTORY', '/home/user/music');
+define('YTGET', '/home/user/src/ytget/ytget.sh');
+define('YOUTUBE_SEARCH', '/home/user/src/ytget/youtube_search');

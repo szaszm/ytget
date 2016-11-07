@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>dafuq</title>
+	<title>ytget</title>
 </head>
 <body>
-	<div style="margin-bottom: 40px;">
-		<h2>Nem találod a listában?</h2>
-		<p>Töltsd le youtube-ról, és azonnal felkerül a listára</p>
-	</div>
 	<section class="main">
 		<form method="get" action="/search.php">
 			<div>
-				<label for="search-input">Keresés a Youtubeon:</label>
-				<input type="text" id="search-input" name="searchInput" placeholder="például: deadmau5 strobe"/>
+				<label for="search-input">Search on youtube:</label>
+				<input type="text" id="search-input" name="searchInput" placeholder="e.g.: deadmau5 strobe"/>
 			</div>
-			<div style="margin-top: 20px;"><input type="submit" value="Keres" /></div>
+			<div style="margin-top: 20px;"><input type="submit" value="Search" /></div>
 		</form>
 	</section>
 	<script type="text/javascript">
 		document.getElementsByTagName('form')[0].onsubmit = function(e) {
 			var message = document.createElement('span');
-			message.innerHTML = 'Nyugi, már keres...';
+			message.innerHTML = 'Searching...';
 			message.style.fontSize = '20px';
 			message.style.color = 'red';
 			message.style.marginTop = '10px';

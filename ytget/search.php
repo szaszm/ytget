@@ -1,24 +1,26 @@
 <?php
+require_once('../config.php');
 
 function multiexplode ($delimiters,$string) {
 	$ready = str_replace($delimiters, $delimiters[0], $string);
 	$launch = explode($delimiters[0], $ready);
 	$launch = array_filter($launch, function($item) { return $item != ""; });
-	return  $launch;
+	return array_values($launch);
 }
 
 $searchValue = '';
+$delimiters = [" ", "_", ",", "-", ".", "(", ")"];
 if(isset($_REQUEST['searchInput'])) {
 	$searchValue = $_REQUEST['searchInput'];
 	$svLen = strlen($searchValue);
-	$svWords = multiexplode([" ", "_", ",", "-"], $searchValue);
+	$svWords = multiexplode($delimiters, $searchValue);
 
 	$playlist = explode("\n", `mpc playlist`);
 	$matches = [];
 	$minSimilarity = 0.5;
 	foreach($playlist as $item) {
 		$itemLen = strlen($item);
-		$itemWords = multiexplode([" ", "_", ",", "-"], $item);
+		$itemWords = multiexplode($delimiters, $item);
 		$avgLen = ($svLen + $itemLen) / 2.0;
 		$similarity = 0;
 		for($i = 0; $i < count($svWords); ++$i) {
@@ -41,7 +43,8 @@ if(isset($_REQUEST['searchInput'])) {
 	usort($matches, function($a, $b) { return floatval($b['similarity']) - floatval($a['similarity']); });
 	$matches = array_slice($matches, 0, 10);
 
-	$results = `/home/szaszm/sources/youtube/youtube_search "$searchValue"`;
+	$youtube_search = YOUTUBE_SEARCH;
+	$results = `$youtube_search "$searchValue"`;
 	$resultsStr = $results;
 	$results = explode("\n", $results);
 	$results = array_filter($results, function($line) { return !empty($line != ""); });

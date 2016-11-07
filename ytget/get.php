@@ -1,8 +1,10 @@
 <?php
-chdir('/home/szaszm/zene/youtube');
+require_once('../config.php');
+chdir(MUSIC_DIRECTORY);
 $id = $_REQUEST['id'];
 $url = "http://youtube.com/watch?v=$id";
-$dlout = trim(`/home/szaszm/bin/ytget.sh "$id" 2>&1`);
+$ytgetsh = YTGET;
+$dlout = trim(`$ytgetsh "$id" 2>&1`);
 ?>
 <html>
 <head>
